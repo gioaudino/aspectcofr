@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-abstract class Chain {
+public abstract class Chain {
 	protected static HashMap<String, ArrayList<String>> handlerMap = new HashMap<String, ArrayList<String>>();
 
 	public static void addHandlerForType(String type, String handlerName) {
@@ -31,7 +31,14 @@ abstract class Chain {
 	}
 
 	public static ArrayList<String> getHandlersForType(String type) {
-		return handlerMap.get(type);
+		ArrayList<String> handlers = handlerMap.get(type);
+		ArrayList<String> deepCopy = new ArrayList<String>();
+		for(String handler: handlers){
+			deepCopy.add(new String(handler));
+		}
+		return deepCopy;
 	}
+	
+	public abstract Response delegateRequest(Request request);
 
 }

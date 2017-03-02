@@ -1,9 +1,14 @@
 package cofr;
+
 import java.util.HashMap;
 
 public class Response {
 	private Handler handler;
 	private HashMap<String, String> params;
+
+	public Response() {
+		this.params = new HashMap<String, String>();
+	}
 
 	public Handler getHandler() {
 		return handler;
@@ -23,5 +28,18 @@ public class Response {
 
 	public void setParams(HashMap<String, String> params) {
 		this.params = params;
+	}
+
+	@Override
+	public String toString() {
+		String[] str = {
+				"Response handled by: ",
+				this.handler.getName(),
+				"Response status: ",
+				this.params.get("status"),
+				"Response message: " +
+				this.params.get("message")
+		};
+		return String.join("\n..", str);
 	}
 }

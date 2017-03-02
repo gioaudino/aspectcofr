@@ -8,7 +8,12 @@ public abstract class Handler {
 
 	protected String name;
 	protected Handler next;
+	protected final String WHOAMI = this.getClass().getName().substring(0,  this.getClass().getName().length() - 7); 
 
+	public Handler(){
+		name = this.getClass().getName();
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -21,7 +26,11 @@ public abstract class Handler {
 		this.next = next;
 	}
 
-	protected abstract boolean canHandle(Request request);
+	protected boolean canHandle(Request request){
+		HashMap<String, String> params = request.getParams();
+		String target = params.get("target");
+		return null != target && WHOAMI.compareToIgnoreCase(target) == 0;
+	}
 
 	public Response handleRequest(Request request) {
 		if (this.canHandle(request)) {
