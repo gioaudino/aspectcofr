@@ -27,7 +27,7 @@ public class RequestGenerator {
 		return requests;
 	}
 	
-	private static Caller callerMock(String name){
+	private static CallerI callerMock(String name){
 		return new CallerMockObject(name);
 	}
 

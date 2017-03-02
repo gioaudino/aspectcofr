@@ -1,6 +1,6 @@
 package cofr;
 
-public class CallerMockObject implements Caller{
+public class CallerMockObject implements CallerI{
 	
 	protected String name;
 	public CallerMockObject(String name){

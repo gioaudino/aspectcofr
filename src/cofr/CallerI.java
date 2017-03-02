@@ -1,6 +1,6 @@
 package cofr;
 
-public interface Caller {
+public interface CallerI {
 	
 	public String getName();
 }

@@ -3,7 +3,7 @@ package cofr;
 import java.util.HashMap;
 
 public class Request {
-	private Caller caller;
+	private CallerI caller;
 	private HashMap<String, String> params;
 
 	public Request() {
@@ -14,7 +14,7 @@ public class Request {
 		return caller;
 	}
 
-	public void setCaller(Caller caller) {
+	public void setCaller(CallerI caller) {
 		this.caller = caller;
 	}
 
