@@ -1,5 +1,6 @@
 package cofr;
 import java.util.ArrayList;
+import cofr.app.*;
 
 
 public abstract aspect CORPattern {

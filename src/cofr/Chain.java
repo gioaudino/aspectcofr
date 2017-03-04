@@ -39,6 +39,10 @@ public abstract class Chain {
 		return deepCopy;
 	}
 	
-	public abstract Response delegateRequest(Request request);
+	public Response delegateRequest(Request request) {
+		Response response = new Response();
+		response.addParam("status", Handler.STATUS_NOT_HANDLED);
+		return response;
+	}
 
 }

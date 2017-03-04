@@ -1,4 +1,5 @@
 
+
 import cofr.*;
 
 public aspect ApplicationCofR extends CORPattern {

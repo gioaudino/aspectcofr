@@ -34,7 +34,7 @@ public class Response {
 	public String toString() {
 		String[] str = {
 				"Response handled by: ",
-				this.handler.getName(),
+//				this.handler.getName(),
 				"Response status: ",
 				this.params.get("status"),
 				"Response message: " +

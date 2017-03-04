@@ -1,7 +1,6 @@
 
 
-import cofr.Handler;
 
-public class PrintButtonHandler extends Handler {
+public class PrintButtonHandler extends GenericApplicationHandler {
 
 }

@@ -1,7 +1,5 @@
 
 
-import cofr.Handler;
-
-public class SaveDialogHandler extends Handler {
+public class SaveDialogHandler extends GenericApplicationHandler {
 
 }

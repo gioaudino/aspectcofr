@@ -5,38 +5,45 @@ import cofr.*;
 import users.*;
 
 public class AOPCofRTester {
-	private static final long NOW = System.currentTimeMillis();
-	private static final long SECONDS_IN_DAY = 86400 * 1000;
-	private static final long YESTERDAY = NOW - SECONDS_IN_DAY;
-	private static final long LAST_WEEK = NOW - 7*SECONDS_IN_DAY;
-	
-	public static void main(String[] args) throws Throwable {
-//		generateApplicationCalls();
-		Calendar cal = Calendar.getInstance();
-		cal.set(1991, 3, 12);
-		User usr = new User();
-		Email email = new Email();
-		email
-			.setSentAt(NOW)
-			.setType("Tryout");
-		
-		usr
-			.setCreatedAt(LAST_WEEK)
-			.setLastAccess(YESTERDAY)
-			.setName("Giorgio")
-			.setSurname("Audino")
-			.setBirthday(cal.getTime())
-			.setTitle("Student")
-			.setLastEmailSent(email);
-		System.out.println(usr);
 
+
+	public static void main(String[] args) throws Throwable {
+		generateApplicationCalls();
+//		generateUserCalls();
 	}
 
-	private static void generateApplicationCalls(){
+
+
+	private static void generateUserCalls() {
+		String [] userChain = {"UserBirthdayHandler", "UserNotEnabledHandler", "UserWithoutActivityHandler"};
+		Chain.setHandlersForType(UserChain.TYPE, userChain);
+		
+		
+		UserChain uc = new UserChain();
+		
+		String[] prints = { "Test #3:",
+				"Using the chain of responsibility called " + UserChain.TYPE
+						+ ". It contains the following (so ordered) classes: ",
+				Chain.getHandlersForType(ApplicationChain.TYPE).toString() };
+		System.out.println(String.join("\n", prints));
+		ArrayList<Request> requests = RequestGenerator.generateForUser();
+		callUserDelegation(uc, requests);
+		
+	}
+
+	private static void callUserDelegation(UserChain uc, ArrayList<Request> requests) {
+		for (Request r : requests) {
+			System.out.println(r + "\n");
+			Response response = uc.delegateRequest(r);
+			System.out.println(response + "\n");
+		}
+	}
+
+	private static void generateApplicationCalls() {
 		String[] appChain = { "OkButtonHandler", "PrintButtonHandler", "PrintDialogHandler", "SaveDialogHandler" };
 		Chain.setHandlersForType(ApplicationChain.TYPE, appChain);
 		ApplicationChain ac = new ApplicationChain();
-		ArrayList<Request> requests = RequestGenerator.generate(ApplicationChain.TYPE);
+		ArrayList<Request> requests = RequestGenerator.generateForApp();
 
 		String[] prints1 = { "Test #1:",
 				"Using the chain of responsibility called " + ApplicationChain.TYPE
@@ -53,15 +60,15 @@ public class AOPCofRTester {
 				Chain.getHandlersForType(ApplicationChain.TYPE).toString() };
 
 		System.out.println(String.join("\n", prints2));
-		requests = RequestGenerator.generate(ApplicationChain.TYPE);
+		requests = RequestGenerator.generateForApp();
 		callAppDelegation(ac, requests);
 	}
 
 	private static void callAppDelegation(ApplicationChain ac, ArrayList<Request> requests) {
 		for (Request r : requests) {
 			System.out.println(r + "\n");
-				Response response = ac.delegateRequest(r);
-				System.out.println(response + "\n");
+			Response response = ac.delegateRequest(r);
+			System.out.println(response + "\n");
 
 		}
 	}

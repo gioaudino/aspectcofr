@@ -1,6 +1,6 @@
 package users;
 
-public class EmailHandler {
+public class EmailService {
 	public static boolean sendEmail(Email email, User user) {
 		System.out.println("Sending email...");
 		System.out.println(email);

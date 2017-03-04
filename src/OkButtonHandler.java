@@ -1,7 +1,6 @@
 
-import cofr.Handler;
 
-public class OkButtonHandler extends Handler {
+public class OkButtonHandler extends GenericApplicationHandler {
 	
 
 }

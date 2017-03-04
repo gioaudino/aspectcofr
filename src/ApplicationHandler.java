@@ -1,7 +1,5 @@
 
 
-import cofr.Handler;
-
-public class ApplicationHandler extends Handler {
+public class ApplicationHandler extends GenericApplicationHandler {
 
 }

@@ -1,6 +1,7 @@
 package users;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User {
@@ -12,7 +13,13 @@ public class User {
 	private Timestamp createdAt = null;
 	private boolean enabled = false;
 	private Email lastEmailSent = null;
+	private final SimpleDateFormat datetimeformat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+	private final SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
 
+	public User(){
+		setCreatedAt(System.currentTimeMillis());
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -91,10 +98,10 @@ public class User {
 			"-- USER -- ",
 			"Name:\t" + name,
 			"Surname:\t" + surname,
-			"Birthday:\t" + birthday,
-			"Created at:\t" + createdAt.toString(),
+			"Birthday:\t" + dateformat.format(birthday.getTime()),
+			"Created at:\t" + datetimeformat.format(createdAt.getTime()),
 			"Enabled:\t" + String.valueOf(enabled),
-			"Last access:\t" + (lastAccess != null ? lastAccess.toString() : "null"),
+			"Last access:\t" + (lastAccess != null ? datetimeformat.format(lastAccess.getTime()) : "null"),
 			"Last email sent: " + (lastEmailSent == null ? "null" : lastEmailSent.toString())
 		};
 		return String.join("\n..", str);
