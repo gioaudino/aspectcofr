@@ -10,7 +10,6 @@ public abstract class GenericApplicationHandler extends Handler {
 
 	@Override
 	protected boolean canHandle(Request request) {
-		System.out.println("+++++++++\n"+WHOAMI);
 		HashMap<String, String> params = request.getParams();
 		String target = params.get("target");
 		return null != target && WHOAMI.compareToIgnoreCase(target) == 0;

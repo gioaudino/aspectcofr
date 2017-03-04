@@ -53,6 +53,7 @@ public class RequestGenerator {
 		ArrayList<User> users = new ArrayList<User>();
 		Calendar cal = Calendar.getInstance();
 		Calendar today = Calendar.getInstance();
+		today.set(Calendar.YEAR, 1980);
 		
 		cal.set(1991, 3, 12);
 		User user = new User();
@@ -71,6 +72,7 @@ public class RequestGenerator {
 			.setEnabled(true)
 			.setName("User")
 			.setSurname("Not active but notified recently")
+			.setBirthday(cal.getTime())
 			.setLastAccess(LAST_WEEK)
 			.setLastEmailSent(email);
 		
@@ -81,6 +83,7 @@ public class RequestGenerator {
 			.setEnabled(true)
 			.setName("User")
 			.setSurname("Not active")
+			.setBirthday(cal.getTime())
 			.setLastAccess(LAST_WEEK);
 		users.add(user3);
 		

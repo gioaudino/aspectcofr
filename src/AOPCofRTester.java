@@ -9,7 +9,7 @@ public class AOPCofRTester {
 
 	public static void main(String[] args) throws Throwable {
 		generateApplicationCalls();
-//		generateUserCalls();
+		generateUserCalls();
 	}
 
 
@@ -24,7 +24,7 @@ public class AOPCofRTester {
 		String[] prints = { "Test #3:",
 				"Using the chain of responsibility called " + UserChain.TYPE
 						+ ". It contains the following (so ordered) classes: ",
-				Chain.getHandlersForType(ApplicationChain.TYPE).toString() };
+				Chain.getHandlersForType(UserChain.TYPE).toString(), "" };
 		System.out.println(String.join("\n", prints));
 		ArrayList<Request> requests = RequestGenerator.generateForUser();
 		callUserDelegation(uc, requests);
@@ -48,16 +48,16 @@ public class AOPCofRTester {
 		String[] prints1 = { "Test #1:",
 				"Using the chain of responsibility called " + ApplicationChain.TYPE
 						+ ". It contains the following (so ordered) classes: ",
-				Chain.getHandlersForType(ApplicationChain.TYPE).toString() };
+				Chain.getHandlersForType(ApplicationChain.TYPE).toString(), "" };
 		System.out.println(String.join("\n", prints1));
 		callAppDelegation(ac, requests);
 
 		Chain.addHandlerForType(ApplicationChain.TYPE, "ApplicationHandler");
 		String[] prints2 = { "\nTest #2:",
-				"One handler (ApplicationHandler) has been added to the end of the handlers list",
+				"One handler (ApplicationHandler) has been appended to the handlers list",
 				"Using again the chain of responsibility called " + ApplicationChain.TYPE
 						+ ". It now contains the following (so ordered) classes: ",
-				Chain.getHandlersForType(ApplicationChain.TYPE).toString() };
+				Chain.getHandlersForType(ApplicationChain.TYPE).toString() , ""};
 
 		System.out.println(String.join("\n", prints2));
 		requests = RequestGenerator.generateForApp();

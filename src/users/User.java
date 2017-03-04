@@ -96,7 +96,7 @@ public class User {
 	public String toString(){
 		String [] str = {
 			"-- USER -- ",
-			"Name:\t" + name,
+			"Name:\t\t" + name,
 			"Surname:\t" + surname,
 			"Birthday:\t" + dateformat.format(birthday.getTime()),
 			"Created at:\t" + datetimeformat.format(createdAt.getTime()),

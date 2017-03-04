@@ -33,12 +33,9 @@ public class Response {
 	@Override
 	public String toString() {
 		String[] str = {
-				"Response handled by: ",
-//				this.handler.getName(),
-				"Response status: ",
-				this.params.get("status"),
-				"Response message: " +
-				this.params.get("message")
+				"Response handled by: " + this.handler.getName(),
+				"Response status: " + this.params.get("status"),
+				"Response message: " + this.params.get("message")
 		};
 		return String.join("\n..", str);
 	}

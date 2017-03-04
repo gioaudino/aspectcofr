@@ -14,7 +14,7 @@ public abstract class GenericUserHandler extends Handler {
 	@Override
 	protected Response doHandle(Request request) {
 		Email email = new Email();
-		email.setType(EMAIL_TYPE);
+		email.setType(this.getEmailType());
 
 		Response response = new Response();
 		response.setHandler(this);
@@ -46,6 +46,10 @@ public abstract class GenericUserHandler extends Handler {
 				"Class " + name + " is the last of the chain. This user is not to be sent any email.");
 		response.setParams(params);
 		return response;
+	}
+	
+	protected String getEmailType(){
+		return this.EMAIL_TYPE;
 	}
 
 	protected boolean isPastInterval(Timestamp timestamp, int days) {

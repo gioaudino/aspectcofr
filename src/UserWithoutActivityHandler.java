@@ -9,7 +9,7 @@ public class UserWithoutActivityHandler extends GenericUserHandler {
 	protected boolean canHandle(Request request) {
 		User user = request.getUser();
 		Email email = user.getLastEmailSent();
-		if (!user.isEnabled() || email == null || isInInterval(email.getSentAt(), 7)) return false;
+		if (!user.isEnabled() || (email != null && isInInterval(email.getSentAt(), 7))) return false;
 		return isOlderThanInterval(user.getLastAccess(), 7);
 	}
 

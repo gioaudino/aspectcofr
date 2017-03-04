@@ -28,7 +28,6 @@ public abstract class Handler {
 	protected abstract boolean canHandle(Request request);
 
 	public Response handleRequest(Request request) {
-		System.out.println("+++++");
 		if (this.canHandle(request)) {
 			return this.doHandle(request);
 		}

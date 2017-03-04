@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import cofr.Request;
@@ -13,7 +14,8 @@ public class UserBirthdayHandler extends GenericUserHandler {
 		Calendar cal = Calendar.getInstance();
 		Calendar cal2 = Calendar.getInstance();
 		cal2.setTime(user.getBirthday());
-		return cal.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+		SimpleDateFormat fmt = new SimpleDateFormat("dd/MM");
+		return fmt.format(cal.getTime()).equals(fmt.format(cal2.getTime()));
 	}
 
 }
