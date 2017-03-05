@@ -2,6 +2,7 @@
 import java.util.HashMap;
 
 import cofr.Handler;
+import cofr.HandlerI;
 import cofr.Request;
 import cofr.Response;
 
@@ -20,7 +21,7 @@ public abstract class GenericApplicationHandler extends Handler {
 		Response response = new Response();
 		response.setHandler(this);
 		HashMap<String, String> params = new HashMap<>();
-		params.put("status", Handler.STATUS_OK);
+		params.put("status", HandlerI.STATUS_OK);
 		params.put("timestamp", String.valueOf(System.currentTimeMillis()));
 		params.put("message", "Class with name '" + name + "' handled the request");
 		response.setParams(params);
@@ -32,7 +33,7 @@ public abstract class GenericApplicationHandler extends Handler {
 		Response response = new Response();
 		response.setHandler(this);
 		HashMap<String, String> params = new HashMap<>();
-		params.put("status", Handler.STATUS_MUST_HANDLE);
+		params.put("status", HandlerI.STATUS_MUST_HANDLE);
 		params.put("timestamp", String.valueOf(System.currentTimeMillis()));
 		params.put("message",
 				"Class " + name + " is the last of the chain, therefore it has to handle the request somehow");

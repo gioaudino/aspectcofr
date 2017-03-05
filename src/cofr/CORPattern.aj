@@ -11,7 +11,7 @@ public abstract aspect CORPattern {
 	Response around(Request request) throws Exception: creation(request){
 		String type = this.getType(request);
 		ArrayList<String> handlers = Chain.getHandlersForType(type);
-		Handler chain = HandlerChainFactory.createHandlerChain(handlers);
+		HandlerI chain = HandlerChainFactory.createHandlerChain(handlers);
 		Response response = chain.handleRequest(request);
 		return response;
 	}

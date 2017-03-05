@@ -12,5 +12,10 @@ public class UserWithoutActivityHandler extends GenericUserHandler {
 		if (!user.isEnabled() || (email != null && isInInterval(email.getSentAt(), 7))) return false;
 		return isOlderThanInterval(user.getLastAccess(), 7);
 	}
+	
+	@Override
+	protected String getEmailType() {
+		return this.EMAIL_TYPE;
+	}
 
 }

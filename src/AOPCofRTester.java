@@ -1,8 +1,6 @@
 import java.util.ArrayList;
-import java.util.Calendar;
 
 import cofr.*;
-import users.*;
 
 public class AOPCofRTester {
 

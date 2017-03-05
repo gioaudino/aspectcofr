@@ -3,18 +3,18 @@ package cofr;
 import java.util.HashMap;
 
 public class Response {
-	private Handler handler;
+	private HandlerI handler;
 	private HashMap<String, String> params;
 
 	public Response() {
 		this.params = new HashMap<String, String>();
 	}
 
-	public Handler getHandler() {
+	public HandlerI getHandler() {
 		return handler;
 	}
 
-	public void setHandler(Handler handler) {
+	public void setHandler(HandlerI handler) {
 		this.handler = handler;
 	}
 

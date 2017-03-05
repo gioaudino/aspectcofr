@@ -3,6 +3,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 import cofr.Handler;
+import cofr.HandlerI;
 import cofr.Request;
 import cofr.Response;
 import users.*;
@@ -23,11 +24,11 @@ public abstract class GenericUserHandler extends Handler {
 		params.put("message", "Class with name '" + name + "' handled the request");
 		params.put("user", request.getUser().toString());
 		params.put("email", email.toString());
-		
+
 		if (EmailService.sendEmail(email, request.getUser())) {
-			params.put("status", Handler.STATUS_OK);
+			params.put("status", HandlerI.STATUS_OK);
 		} else {
-			params.put("status", Handler.STATUS_ERROR);
+			params.put("status", HandlerI.STATUS_ERROR);
 		}
 
 		response.setParams(params);
@@ -39,18 +40,15 @@ public abstract class GenericUserHandler extends Handler {
 		Response response = new Response();
 		response.setHandler(this);
 		HashMap<String, String> params = new HashMap<>();
-		params.put("status", Handler.STATUS_MUST_HANDLE);
+		params.put("status", HandlerI.STATUS_MUST_HANDLE);
 		params.put("timestamp", String.valueOf(System.currentTimeMillis()));
 		params.put("user", request.getUser().toString());
-		params.put("message",
-				"Class " + name + " is the last of the chain. This user is not to be sent any email.");
+		params.put("message", "Class " + name + " is the last of the chain. This user is not to be sent any email.");
 		response.setParams(params);
 		return response;
 	}
-	
-	protected String getEmailType(){
-		return this.EMAIL_TYPE;
-	}
+
+	protected abstract String getEmailType();
 
 	protected boolean isPastInterval(Timestamp timestamp, int days) {
 		Calendar cal = Calendar.getInstance();

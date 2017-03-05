@@ -7,7 +7,6 @@ import java.util.Date;
 public class User {
 	private String name;
 	private String surname;
-	private String title;
 	private Date birthday;
 	private Timestamp lastAccess = null;
 	private Timestamp createdAt = null;
@@ -35,15 +34,6 @@ public class User {
 
 	public User setSurname(String surname) {
 		this.surname = surname;
-		return this;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public User setTitle(String title) {
-		this.title = title;
 		return this;
 	}
 

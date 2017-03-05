@@ -11,5 +11,10 @@ public class UserNotEnabledHandler extends GenericUserHandler {
 		if (user.isEnabled() || user.getLastAccess() != null) return false;
 		return isPastInterval(user.getCreatedAt(), 7);
 	}
+	
+	@Override
+	protected String getEmailType() {
+		return this.EMAIL_TYPE;
+	}
 
 }

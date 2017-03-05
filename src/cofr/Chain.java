@@ -41,7 +41,7 @@ public abstract class Chain {
 	
 	public Response delegateRequest(Request request) {
 		Response response = new Response();
-		response.addParam("status", Handler.STATUS_NOT_HANDLED);
+		response.addParam("status", HandlerI.STATUS_NOT_HANDLED);
 		return response;
 	}
 

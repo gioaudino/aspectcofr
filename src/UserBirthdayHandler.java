@@ -18,4 +18,9 @@ public class UserBirthdayHandler extends GenericUserHandler {
 		return fmt.format(cal.getTime()).equals(fmt.format(cal2.getTime()));
 	}
 
+	@Override
+	protected String getEmailType() {
+		return this.EMAIL_TYPE;
+	}
+
 }
