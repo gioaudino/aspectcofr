@@ -16,7 +16,7 @@ public class RequestGenerator {
 	public static ArrayList<Request> generateForApp() {
 		ArrayList<String> handlers = Chain.getHandlersForType(ApplicationChain.TYPE);
 		ArrayList<Request> requests = new ArrayList<Request>();
-		for(int i = 0; i <= handlers.size()/2; i++){
+		for(int i = 0; i < handlers.size(); i++){
 			int randomNum = ThreadLocalRandom.current().nextInt(0, handlers.size());
 			Request request = new Request();
 			String target = handlers.get(randomNum).substring(0, handlers.get(randomNum).length() - 7);
